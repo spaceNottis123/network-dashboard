@@ -1,0 +1,176 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "scapy.all",
+        "description": "scapy.all",
+        "isExtraImport": true,
+        "detail": "scapy.all",
+        "documentation": {}
+    },
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "PacketProcessor",
+        "kind": 6,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "class PacketProcessor:\n    \"\"\"Process and analyze network packets\"\"\"\n    def __init__(self):\n        self.protocol_map = {\n            1: 'ICMP',\n            6: 'TCP',\n            17: 'UDP'\n        }\n        self.packet_data = []\n        self.start_time = datetime.now()",
+        "detail": "dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "create_visualizations",
+        "kind": 2,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "def create_visualizations(df: pd.DataFrame):\n    \"\"\"Create all dashboard visualizations\"\"\"\n    if len(df) > 0:\n        # Protocol distribution\n        protocol_counts = df['protocol'].value_counts()\n        fig_protocol = px.pie(\n            values=protocol_counts.values,\n            names=protocol_counts.index,\n            title=\"Protocol Distribution\"\n        )",
+        "detail": "dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "start_packet_capture",
+        "kind": 2,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "def start_packet_capture():\n    \"\"\"Start packet capture in a separate thread\"\"\"\n    processor = PacketProcessor()\n    def capture_packets():\n        sniff(prn=processor.process_packet, store=False)\n    capture_thread = threading.Thread(target=capture_packets, daemon=True)\n    capture_thread.start()\n    return processor\ndef main():\n    \"\"\"Main function to run the dashboard\"\"\"",
+        "detail": "dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "def main():\n    \"\"\"Main function to run the dashboard\"\"\"\n    st.set_page_config(page_title=\"Network Traffic Analysis\", layout=\"wide\")\n    st.title(\"Real-time Network Traffic Analysis\")\n    # Initialize packet processor in session state\n    if 'processor' not in st.session_state:\n        st.session_state.processor = start_packet_capture()\n        st.session_state.start_time = time.time()\n    # Create dashboard layout\n    col1, col2 = st.columns(2)",
+        "detail": "dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "dashboard",
+        "description": "dashboard",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass PacketProcessor:\n    \"\"\"Process and analyze network packets\"\"\"\n    def __init__(self):\n        self.protocol_map = {\n            1: 'ICMP',\n            6: 'TCP',\n            17: 'UDP'\n        }\n        self.packet_data = []",
+        "detail": "dashboard",
+        "documentation": {}
+    }
+]
